@@ -88,6 +88,8 @@ for i in {1..15}; do curl -s http://localhost:8080/hello; done
 
 ## Architecture
 
+![Rate Limiter Overview Architecture](../../../../docs/rate_limiter_overview_architecture.svg)
+
 ### Components
 
 - **RateLimitFilter**: Servlet filter that intercepts requests and applies rate limiting
