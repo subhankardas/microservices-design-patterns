@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      hello-service-circuit-breaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, circuitbreakers, prometheus
+  endpoint:
+    health:
+      show-details: always
