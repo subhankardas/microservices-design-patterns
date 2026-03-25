@@ -20,6 +20,12 @@ In high-scale, distributed environments, microservices face unique challenges re
 - **Failing Fast:** Instead of forcing clients to wait for network timeouts when a service is struggling, the circuit opens and rejects requests immediately, allowing the struggling service time to recover.
 - **Graceful Degradation:** Provides a hook to return fallback data (like a cached response or a default value) when a dependent service is unavailable, maintaining a better user experience.
 
+### 3. Retry with Exponential Backoff
+
+- **Handling Transient Failures:** Automatically retries failed requests to downstream services, which is effective for temporary issues like network glitches, brief service unavailability, or request throttling.
+- **Avoiding Thundering Herd:** Implements an exponential backoff strategy—increasing the delay between retries—to prevent a "thundering herd" scenario where multiple clients repeatedly hammer a recovering service, causing it to fail again.
+- **Improving System Resilience:** Increases the overall stability and fault tolerance of the system by gracefully handling intermittent failures without manual intervention.
+
 ---
 
 ## ✅ Completed Work
@@ -31,10 +37,12 @@ In high-scale, distributed environments, microservices face unique challenges re
 - [x] **Circuit Breaker**
   - Go implementation of count-based circuit breaker using a Finite State Machine (FSM)
   - Spring Boot with Resilience4j and Prometheus monitoring
+- [x] **Retry with Exponential Backoff**
+  - Go implementation
+  - Spring Boot with retry and exponential backoff
 
 ## 🚧 Planned Work
 
-- [ ] Retry with Exponential Backoff
 - [ ] Bulkhead (Isolation)
 - [ ] Service Mesh / API Gateway
 - [ ] Saga Pattern (Distributed Transactions)
@@ -50,3 +58,4 @@ In high-scale, distributed environments, microservices face unique challenges re
 
 - [Spring Boot Rate Limiter](patterns/rate-limiter/spring/distributed-rate-limiting/README.md)
 - [Spring Boot Circuit Breaker (Resilience4j)](patterns/circuit-breaker/spring/circuit-breaker-resilience4j/README.md)
+- [Spring Boot Retry with Exponential Backoff](patterns/retry-with-backoff/spring/retry-exponential-backoff/README.md)
